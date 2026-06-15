@@ -201,6 +201,29 @@ python3 main.py
 
 ---
 
+### Configuração no macOS
+#### 1. Configurar Banco de Dados e Usuário
+No macOS, se o PostgreSQL foi instalado via Homebrew ou Postgres.app, ele roda sob o seu usuário logado por padrão. Abra o terminal e execute:
+```bash
+psql -d postgres -c "CREATE ROLE lab_user WITH LOGIN PASSWORD 'lab_password';"
+psql -d postgres -c "CREATE DATABASE gestao_laboratorio OWNER lab_user;"
+```
+*(Nota: Se falhar por falta de permissão, tente conectar usando o usuário administrador padrão: `psql -U postgres -c ...`).*
+#### 2. Instalar o Driver do PostgreSQL para Python
+```bash
+pip3 install psycopg2-binary
+```
+#### 3. Criar as Tabelas e Dados Iniciais (Seeds)
+```bash
+PGPASSWORD=lab_password psql -h 127.0.0.1 -U lab_user -d gestao_laboratorio -f schema.sql
+```
+#### 4. Executar o Protótipo
+```bash
+python3 main.py
+```
+---
+
+
 ### Configuração no Windows
 
 #### 1. Configurar Banco de Dados e Usuário
