@@ -166,36 +166,67 @@ No protótipo completo, a interface gráfica (prevista para ser desenvolvida em 
 
 ## 6. Instruções de Instalação e Execução
 
-### Pré-requisitos
-- Sistema operacional Linux (Ubuntu/Mint) ou compatível.
-- PostgreSQL instalado e rodando localmente na porta 5432.
-- Python 3 instalado.
+Este projeto é 100% multiplataforma e funciona tanto em **Linux** quanto em **Windows** ou **macOS**.
 
-### Configuração do Banco de Dados e Usuário
-Abra o terminal e execute os comandos abaixo para criar o usuário e o banco de dados do sistema no PostgreSQL:
+### Pré-requisitos
+- **Python 3** instalado.
+- **PostgreSQL** instalado e rodando localmente na porta default (`5432`).
+
+---
+
+### Configuração no Linux (Ubuntu/Mint/Debian)
+
+#### 1. Configurar Banco de Dados e Usuário
+Abra o terminal e execute:
 ```bash
-# Conectar no PostgreSQL como administrador e configurar banco e permissões
 sudo -u postgres psql -c "CREATE ROLE lab_user WITH LOGIN PASSWORD 'lab_password';"
 sudo -u postgres psql -c "CREATE DATABASE gestao_laboratorio OWNER lab_user;"
 ```
 
-### Instalação das Dependências do Python
-Instale o driver oficial do PostgreSQL para Python no sistema operacional:
+#### 2. Instalar o Driver do PostgreSQL para Python
 ```bash
 sudo apt-get update
 sudo apt-get install -y python3-psycopg2
 ```
 
-### Criação das Tabelas e Inserção dos Seeds (Dados Iniciais)
-Aplique o script `schema.sql` no banco de dados criado (utilizando a senha `lab_password` quando solicitado):
+#### 3. Criar as Tabelas e Dados Iniciais (Seeds)
 ```bash
 PGPASSWORD=lab_password psql -h 127.0.0.1 -U lab_user -d gestao_laboratorio -f schema.sql
 ```
 
-### Executando o Sistema
-Execute o script de demonstração do backend para validar a implementação das camadas e padrões de projeto GoF:
+#### 4. Executar o Protótipo
 ```bash
 python3 main.py
+```
+
+---
+
+### Configuração no Windows
+
+#### 1. Configurar Banco de Dados e Usuário
+Abra o **SQL Shell (psql)** ou acesse o **pgAdmin** e execute as seguintes queries SQL:
+```sql
+CREATE ROLE lab_user WITH LOGIN PASSWORD 'lab_password';
+CREATE DATABASE gestao_laboratorio OWNER lab_user;
+```
+
+#### 2. Instalar o Driver do PostgreSQL para Python
+Abra o Command Prompt (`cmd`) ou o PowerShell e execute:
+```cmd
+pip install psycopg2-binary
+```
+
+#### 3. Criar as Tabelas e Dados Iniciais (Seeds)
+No Command Prompt (`cmd`) ou PowerShell, navegue até a pasta do projeto e execute:
+```cmd
+set PGPASSWORD=lab_password
+psql -h 127.0.0.1 -U lab_user -d gestao_laboratorio -f schema.sql
+```
+*(Nota: Se o comando `psql` não for reconhecido, certifique-se de que a pasta `bin` do PostgreSQL está adicionada ao PATH do Windows).*
+
+#### 4. Executar o Protótipo
+```cmd
+python main.py
 ```
 
 ---
