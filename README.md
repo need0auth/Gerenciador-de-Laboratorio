@@ -240,11 +240,11 @@ Abaixo está o link para o vídeo de apresentação de até 5 minutos explicando
 ---
 **Desenvolvido pelo Grupo de Integração**
 (Grupo composto de 5 a 8 alunos)
-- Aluno 1
-- Aluno 2
-- Aluno 3
-- Aluno 4
-- Aluno 5
+- Sandro Roni Soares
+- João Pedro Castro de Brito
+- Gabriel Antoniazzi
+- Eduarda Pedroso Silva
+- Fernando Flores da Cunha
 - Aluno 6
 - Aluno 7
 - Aluno 8
