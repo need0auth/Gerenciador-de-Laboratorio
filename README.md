@@ -245,6 +245,4 @@ Abaixo está o link para o vídeo de apresentação de até 5 minutos explicando
 - Gabriel Antoniazzi
 - Eduarda Pedroso Silva
 - Fernando Flores da Cunha
-- Aluno 6
-- Aluno 7
-- Aluno 8
+
